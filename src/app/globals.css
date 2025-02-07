@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,5 +23,101 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+} */
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+/* TipTap and Result of TipTap Styles */
+.tiptap blockquote,
+.post-body blockquote {
+  border-left: 3px solid #ccc;
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.tiptap a,
+.post-body a {
+  cursor: pointer;
+  color: #06a7bd;
+  text-decoration: underline;
+  &:hover {
+    color: #037180;
+  }
+}
+.character-count {
+  align-items: center;
+  color: #717477;
+  display: flex;
+  font-size: 0.75rem;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  svg {
+    color: #06a7bd;
+  }
+  &--warning,
+  &--warning svg {
+    color: #e91e1e;
+  }
+}
+.tiptap,
+.post-body {
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+  p {
+    margin: 10px 0;
+  }
+  ul,
+  ol {
+    margin: 0 30px;
+  }
+  ul li,
+  ol li,
+  ul li p,
+  ol li p {
+    margin: 7px 0;
+  }
+  blockquote {
+    padding: 5px 15px;
+    background-color: #f9f9f9;
+  }
+  div:has(> iframe) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 575px) {
+  .post-body div iframe {
+    height: 350px;
   }
 }

@@ -1,0 +1,238 @@
+export const events = [
+  {
+    // id: 1,
+    title: "World Cancer Awareness Day",
+    description:
+      "Join us in raising awareness about cancer prevention, detection, and treatment. Learn from leading healthcare professionals and connect with survivors who share their inspiring stories.",
+    status: "UP_COMING",
+    startDate: "2024-12-15T10:00:00.000Z",
+    endDate: "2024-12-15T15:00:00.000Z",
+    // createdAt: "2024-12-10T12:00:00.000Z",
+    // updatedAt: "2024-12-12T08:00:00.000Z",
+    locationType: "HYBRID",
+    venue: "Global Health Center",
+    address: "123 Cancer Awareness Lane, New York, USA",
+    mapLink: "https://www.google.com/maps?q=New+York",
+    onlineLink: "https://example.com/zoom-meeting-link",
+    bannerImage:
+      "https://images.unsplash.com/photo-1576675196647-9c8dbfc38cc6?w=1932&auto=format",
+    gallery: [
+      "https://images.unsplash.com/photo-1576675196647-9c8dbfc38cc6?w=1932",
+      "https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=1920",
+      "https://images.unsplash.com/photo-1515976679409-1d7b9d2cb1ee?w=1920",
+    ],
+    resources: [],
+    // resources: [
+    //   {
+    //     id: 1,
+    //     type: "document",
+    //     title: "Cancer Prevention Tips",
+    //     url: "/files/cancer-prevention-tips.pdf",
+    //   },
+    //   {
+    //     id: 2,
+    //     type: "link",
+    //     title: "Cancer Research Updates",
+    //     url: "https://cancer-research.org",
+    //   },
+    // ],
+    organizerName: "Hope Foundation",
+    organizerContact: "contact@hopefoundation.org",
+    organizerWebsite: "https://hopefoundation.org",
+    // userId: "a12bc345-d678-90ef-gh12-3456ijklmnop",
+    // user: {
+    //   id: "a12bc345-d678-90ef-gh12-3456ijklmnop",
+    //   image:
+    //     "https://images.unsplash.com/photo-1502767089025-6572583495a2?w=2080",
+    //   email: "eventadmin@hopefoundation.org",
+    //   isAdmin: true,
+    //   username: "HopeAdmin",
+    // },
+  },
+  {
+    // id: 2,
+    title: "Cancer Survivors Conference",
+    description:
+      "Celebrate the strength and resilience of cancer survivors. Participate in workshops, wellness sessions, and community discussions aimed at improving life after recovery.",
+    status: "FINISHED",
+    startDate: "2024-11-25T09:00:00.000Z",
+    endDate: "2024-11-25T18:00:00.000Z",
+    // createdAt: "2024-11-01T10:00:00.000Z",
+    // updatedAt: "2024-11-26T08:00:00.000Z",
+    locationType: "ONSITE",
+    venue: "Cancer Survivors Park",
+    address: "456 Resilience Road, London, UK",
+    mapLink: "https://www.google.com/maps?q=London",
+    bannerImage:
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=1932&auto=format",
+    gallery: [
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=1932",
+      "https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=1920",
+    ],
+    resources: [],
+    // resources: [
+    //   {
+    //     id: 1,
+    //     type: "document",
+    //     title: "Event Recap",
+    //     url: "/files/event-recap.pdf",
+    //   },
+    //   {
+    //     id: 2,
+    //     type: "link",
+    //     title: "Photo Gallery",
+    //     url: "https://example.com/gallery",
+    //   },
+    // ],
+    organizerName: "Survivors Network",
+    organizerContact: "info@survivorsnetwork.org",
+    organizerWebsite: "https://survivorsnetwork.org",
+    // userId: "b34de567-f890-12gh-ij34-5678klmnopqr",
+    // user: {
+    //   id: "b34de567-f890-12gh-ij34-5678klmnopqr",
+    //   image:
+    //     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=2080",
+    //   email: "admin@survivorsnetwork.org",
+    //   isAdmin: true,
+    //   username: "SurvivorsAdmin",
+    // },
+  },
+  {
+    // id: 3,
+    title: "Pink Ribbon Walk 2024",
+    description:
+      "Participate in the annual Pink Ribbon Walk to show solidarity with breast cancer survivors. Funds raised will go towards breast cancer research and support programs.",
+    status: "UP_COMING",
+    startDate: "2024-12-20T08:00:00.000Z",
+    endDate: "2024-12-20T12:00:00.000Z",
+    // createdAt: "2024-11-30T15:00:00.000Z",
+    // updatedAt: "2024-12-01T09:00:00.000Z",
+    locationType: "ONSITE",
+    venue: "Central Park",
+    address: "789 Hope Avenue, Chicago, USA",
+    mapLink: "https://www.google.com/maps?q=Chicago",
+    bannerImage:
+      "https://images.unsplash.com/photo-1542206395-9feb3edaa68f?w=1932",
+    gallery: [
+      "https://images.unsplash.com/photo-1542206395-9feb3edaa68f?w=1932",
+      "https://images.unsplash.com/photo-1542207113-0c959b6de7b8?w=1920",
+    ],
+    resources: [],
+    // resources: [
+    //   {
+    //     id: 1,
+    //     type: "document",
+    //     title: "Walk Route Map",
+    //     url: "/files/walk-route.pdf",
+    //   },
+    //   {
+    //     id: 2,
+    //     type: "link",
+    //     title: "Donation Page",
+    //     url: "https://example.com/donate",
+    //   },
+    // ],
+    organizerName: "Breast Cancer Awareness Foundation",
+    organizerContact: "info@pinkribbonwalk.org",
+    organizerWebsite: "https://pinkribbonwalk.org",
+    // userId: "c45ef678-gh90-12ij-kl45-6789mnopqrst",
+    // user: {
+    //   id: "c45ef678-gh90-12ij-kl45-6789mnopqrst",
+    //   image:
+    //     "https://images.unsplash.com/photo-1595152772835-219674b2a8a5?w=2080",
+    //   email: "admin@pinkribbonwalk.org",
+    //   isAdmin: true,
+    //   username: "PinkRibbonAdmin",
+    // },
+  },
+  {
+    // id: 4,
+    title: "Cancer Research Symposium 2024",
+    description:
+      "A three-day event featuring keynote speeches by leading oncologists, panel discussions on innovative treatments, and networking opportunities for researchers and advocates.",
+    status: "UP_COMING",
+    startDate: "2024-12-10T09:00:00.000Z",
+    endDate: "2024-12-12T17:00:00.000Z",
+    // createdAt: "2024-11-25T10:00:00.000Z",
+    // updatedAt: "2024-12-01T08:00:00.000Z",
+    locationType: "HYBRID",
+    venue: "Global Convention Center",
+    address: "123 Research Drive, Berlin, Germany",
+    mapLink: "https://www.google.com/maps?q=Berlin",
+    onlineLink: "https://example.com/research-symposium",
+    bannerImage:
+      "https://images.unsplash.com/photo-1524567498587-df916f599975?w=1932",
+    gallery: [
+      "https://images.unsplash.com/photo-1524567498587-df916f599975?w=1932",
+      "https://images.unsplash.com/photo-1553456532-8c94013ad7fd?w=1920",
+    ],
+    resources: [],
+    // resources: [
+    //   {
+    //     id: 1,
+    //     type: "document",
+    //     title: "Symposium Agenda",
+    //     url: "/files/symposium-agenda.pdf",
+    //   },
+    //   {
+    //     id: 2,
+    //     type: "link",
+    //     title: "Registration",
+    //     url: "https://example.com/register",
+    //   },
+    // ],
+    organizerName: "International Cancer Research Association",
+    organizerContact: "events@icra.org",
+    organizerWebsite: "https://icra.org",
+    // userId: "d56fg789-hi12-34jk-mn56-8901opqrstuv",
+    // user: {
+    //   id: "d56fg789-hi12-34jk-mn56-8901opqrstuv",
+    //   image:
+    //     "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=2080",
+    //   email: "admin@icra.org",
+    //   isAdmin: true,
+    //   username: "ICRAAdmin",
+    // },
+  },
+  {
+    // id: 5,
+    title: "Youth Cancer Awareness Workshop",
+    description:
+      "An interactive workshop for young adults focusing on early detection, healthy lifestyles, and support networks. Learn from specialists and connect with peers.",
+    status: "CANCELLED",
+    startDate: "2024-12-05T14:00:00.000Z",
+    endDate: "2024-12-05T17:00:00.000Z",
+    // createdAt: "2024-11-20T10:00:00.000Z",
+    // updatedAt: "2024-12-01T08:00:00.000Z",
+    locationType: "ONSITE",
+    venue: "Youth Wellness Center",
+    address: "456 Future Street, Sydney, Australia",
+    mapLink: "https://www.google.com/maps?q=Sydney",
+    bannerImage:
+      "https://images.unsplash.com/photo-1534126511673-b6899657816a?w=1932",
+    gallery: [
+      "https://images.unsplash.com/photo-1534126511673-b6899657816a?w=1932",
+    ],
+    resources: [],
+    // resources: [
+    //   {
+    //     id: 1,
+    //     type: "document",
+    //     title: "Healthy Living Guide",
+    //     url: "/files/healthy-living-guide.pdf",
+    //   },
+    // ],
+    organizerName: "Youth Against Cancer",
+    organizerContact: "contact@youthagainstcancer.org",
+    organizerWebsite: "https://youthagainstcancer.org",
+    // userId: "e67gh890-ij34-56kl-op78-9012qrstuvwx",
+    // user: {
+    //   id: "e67gh890-ij34-56kl-op78-9012qrstuvwx",
+    //   image:
+    //     "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=2080",
+    //   email: "admin@youthagainstcancer.org",
+    //   isAdmin: true,
+    //   username: "YouthAdmin",
+    // },
+  },
+];

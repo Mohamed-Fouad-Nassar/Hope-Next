@@ -1,0 +1,167 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Auth Table Schema
+model User {
+  id        String    @id @unique @default(uuid()) // UUID as primary key, generated dynamically
+  username  String    @unique @db.VarChar(100) // Username, unique
+  email     String    @unique @db.VarChar(100) // Email, unique
+  password  String    @db.VarChar(64) // or higher if needed for hashing
+  isAdmin   Boolean   @default(false) // Is the user an admin, defaults to false
+  image     String?   @db.VarChar(500) // Image URL
+  createdAt DateTime  @default(now()) // Timestamp for first creation
+  updatedAt DateTime  @updatedAt // Updated at timestamp
+  posts     Post[] // One-to-many relation with Post
+  comments  Comment[] // One-to-many relation with Comment
+
+  events Event[] // One-to-many relation with Event
+
+  likes Like[] // One-to-many relation with Liked Post
+  saves Save[] // One-to-many relation with Saved Post
+}
+
+// Blog Table Schema
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  HIDDEN
+}
+
+model Post {
+  id          Int        @id @default(autoincrement()) // Unique integer ID, auto-incremented
+  title       String     @db.VarChar(255) // Title of the post
+  description String     @db.Text // Description, no strict length limit
+  image       String     @db.VarChar(500) // Image URL
+  createdAt   DateTime   @default(now()) // Timestamp for first creation
+  updatedAt   DateTime   @updatedAt // Updated at timestamp
+  userId      String // Foreign key referencing User
+  user        User       @relation(fields: [userId], references: [id]) // Relation to User model
+  status      PostStatus @default(DRAFT) // Added this field
+  comments    Comment[] // One-to-many relation with Comment
+
+  likes Like[]
+  saves Save[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement()) // Unique integer ID, auto-incremented
+  content   String   @db.VarChar(2500) // Comment content, no strict length limit
+  userId    String // Foreign key referencing User
+  postId    Int // Foreign key referencing Post
+  // isHidden  Boolean  @default(false) // Added this field
+  createdAt DateTime @default(now()) // Timestamp for first creation
+  updatedAt DateTime @updatedAt // Updated at timestamp
+  user      User     @relation(fields: [userId], references: [id]) // Relation to User model
+  post      Post     @relation(fields: [postId], references: [id]) // Relation to Post model
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  userId    String
+  postId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id])
+}
+
+model Save {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  userId    String
+  postId    Int
+  post      Post     @relation(fields: [postId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+// Events Table Schema
+enum EventTypeStatus {
+  ONLINE
+  ONSITE
+  HYBRID
+}
+
+enum EventStatus {
+  UP_COMING
+  FINISHED
+  CANCELLED
+}
+
+model Event {
+  id          Int         @id @default(autoincrement())
+  title       String      @db.VarChar(255)
+  description String      @db.Text
+  status      EventStatus @default(UP_COMING)
+  startDate   DateTime
+  endDate     DateTime
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  // category            String
+  // tags     String[]     // Array of tags for categorization
+
+  locationType EventTypeStatus
+  venue        String? // Venue for in-person events
+  address      String? // Address for in-person events
+  mapLink      String? // Google Maps link (optional)
+  onlineLink   String? // Online meeting link (optional)
+
+  bannerImage String // URL to the banner image
+  gallery     String[] @default([]) // Array of image/video URLs
+  // resources   Json?  // Array of resource object (e.g., PDFs, links)
+  resources   String[] @default([]) // Array of resource object (e.g., PDFs, links)
+
+  // organizerName    String
+  // organizerContact String
+  // organizerWebsite String?
+  organizerId String // Foreign key for EventOrganizer
+  organizer   EventOrganizer @relation("EventOrganizerEvents", fields: [organizerId], references: [id])
+
+  //  isRegistrationRequired Boolean   @default(false)
+  //  registrationLink    String?      // Link for event registration
+  //  registrationDeadline DateTime?   // Deadline for registration
+  //  attendeeCount       Int          @default(0)
+
+  //  feedbackFormLink    String?      // Optional link for post-event feedback
+  //  rating              Float?       // Average feedback rating
+
+  userId String // Foreign key referencing User
+  user   User   @relation(fields: [userId], references: [id]) // Relation to User model
+}
+
+model EventOrganizer {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   @db.VarChar(255)
+  contact   String   @db.VarChar(255) // Email or phone number
+  website   String?  @db.VarChar(255)
+
+  events Event[] @relation("EventOrganizerEvents") // One-to-many relationship with Event
+}
+
+// Settings Table Schema
+model Settings {
+  id Int @id @default(autoincrement())
+
+  usersPerPage    Int @default(10)
+  eventsPerPage   Int @default(9)
+  articlesPerPage Int @default(9)
+  commentsPerPage Int @default(12)
+
+  postLengthLimit  Int @default(3000)
+  eventLengthLimit Int @default(1500)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
