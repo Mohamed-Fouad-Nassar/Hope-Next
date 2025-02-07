@@ -10,6 +10,7 @@ import {
   TelegramShareButton,
   WhatsappShareButton,
 } from "next-share";
+import toast from "react-hot-toast";
 import {
   PaperClipIcon,
   ExclamationTriangleIcon,
@@ -17,8 +18,8 @@ import {
 import { usePathname } from "next/navigation";
 
 import Menus from "@/ui/Menus";
+
 import { BASE_URL } from "@/lib/constants";
-import toast from "react-hot-toast";
 
 export default function PostMenu({
   title,

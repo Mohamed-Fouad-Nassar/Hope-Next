@@ -2,6 +2,8 @@ import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { Event } from "@prisma/client";
+import { BASE_URL } from "@/lib/constants";
+
 import {
   TEventOrganizer,
   TEventWithOrganizer,
@@ -18,9 +20,9 @@ export async function getEvents(
 
   const cookie = cookies().get("jwtToken")?.value || "";
   const res = await fetch(
-    `${process.env.BASE_API_URL}/events?page=${page || "1"}&type=${
-      type || "all"
-    }&status=${status || "all"}`,
+    `${BASE_URL}/events?page=${page || "1"}&type=${type || "all"}&status=${
+      status || "all"
+    }`,
     {
       cache: "no-cache",
       headers: {
@@ -41,7 +43,7 @@ export async function getEventById(
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${process.env.BASE_API_URL}/events/${eventId}`, {
+  const res = await fetch(`${BASE_URL}/events/${eventId}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -57,15 +59,12 @@ export async function getEventById(
 export async function getEventsByTitle(title: string): Promise<Event[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
 
-  const res = await fetch(
-    `${process.env.BASE_API_URL}/events/search?query=${title}`,
-    {
-      cache: "no-cache",
-      headers: {
-        Authorization: `Bearer ${cookie}`,
-      },
-    }
-  );
+  const res = await fetch(`${BASE_URL}/events/search?query=${title}`, {
+    cache: "no-cache",
+    headers: {
+      Authorization: `Bearer ${cookie}`,
+    },
+  });
 
   if (!res.ok) throw new Error("Failed to fetch events");
   return res.json();
@@ -78,9 +77,7 @@ export async function getEventsCount(
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const res = await fetch(
-    `${process.env.BASE_API_URL}/events/count?type=${type || "all"}&status=${
-      status || "all"
-    }`,
+    `${BASE_URL}/events/count?type=${type || "all"}&status=${status || "all"}`,
     {
       cache: "no-cache",
     }
@@ -92,7 +89,7 @@ export async function getEventsCount(
 
 // --------------------- Organizers ---------------------
 export async function getOrganizers(): Promise<TEventOrganizer[]> {
-  const res = await fetch(`${process.env.BASE_API_URL}/organizers`, {
+  const res = await fetch(`${BASE_URL}/organizers`, {
     cache: "no-cache",
   });
 
@@ -101,7 +98,7 @@ export async function getOrganizers(): Promise<TEventOrganizer[]> {
 }
 
 export async function getOrganizersCount(): Promise<{ count: number }> {
-  const res = await fetch(`${process.env.BASE_API_URL}/organizers/count`, {
+  const res = await fetch(`${BASE_URL}/organizers/count`, {
     cache: "no-cache",
   });
 

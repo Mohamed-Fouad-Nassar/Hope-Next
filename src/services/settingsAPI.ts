@@ -1,10 +1,12 @@
 // import axios from "axios";
 import { notFound } from "next/navigation";
 
+import { BASE_URL } from "@/lib/constants";
+
 // import { updateSettingsSchema } from "@/lib/validations";
 
 export async function getSettings() {
-  const res = await fetch(`${process.env.BASE_API_URL}/settings`, {
+  const res = await fetch(`${BASE_URL}/settings`, {
     cache: "no-cache",
   });
 
