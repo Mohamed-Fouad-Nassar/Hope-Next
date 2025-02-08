@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 import { verifyToken } from "@/utils/jwt";
 import { getUserById } from "@/services/authAPI";
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default async function Header() {
   const userToken = cookies().get("jwtToken")?.value || "";

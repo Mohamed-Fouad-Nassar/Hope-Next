@@ -100,6 +100,7 @@ type TNavbarProps = {
 
 export default function NavBar({ user }: TNavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <div className="lg:hidden">
@@ -194,8 +195,8 @@ export default function NavBar({ user }: TNavbarProps) {
       {/* Mobile Menu */}
       <Dialog
         open={mobileMenuOpen}
-        onClose={setMobileMenuOpen}
         className="lg:hidden"
+        onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-50 p-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
