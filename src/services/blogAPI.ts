@@ -16,7 +16,7 @@ export async function getPosts(
 
   const cookie = cookies().get("jwtToken")?.value || "";
   const res = await fetch(
-    `${BASE_URL}/blog/posts?page=${page}&status=${status}`,
+    `${BASE_URL}/api/blog/posts?page=${page}&status=${status}`,
     {
       cache: "no-cache",
       headers: {
@@ -33,7 +33,7 @@ export async function getPosts(
 }
 export async function getPublishedPosts(page: string = "1"): Promise<TPost[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/posts?page=${page}`, {
+  const res = await fetch(`${BASE_URL}/api/blog/posts?page=${page}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -44,30 +44,36 @@ export async function getPublishedPosts(page: string = "1"): Promise<TPost[]> {
 }
 export async function getHiddenPosts(page: string = "1"): Promise<TPost[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/posts?page=${page}&status=HIDDEN`, {
-    cache: "no-cache",
-    headers: {
-      Authorization: `Bearer ${cookie}`,
-    },
-  });
+  const res = await fetch(
+    `${BASE_URL}/api/blog/posts?page=${page}&status=HIDDEN`,
+    {
+      cache: "no-cache",
+      headers: {
+        Authorization: `Bearer ${cookie}`,
+      },
+    }
+  );
   if (!res.ok) throw new Error("Failed to all fetch posts");
   return res.json();
 }
 export async function getDraftPosts(page: string = "1"): Promise<TPost[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/posts?page=${page}&status=DRAFT`, {
-    cache: "no-cache",
-    headers: {
-      Authorization: `Bearer ${cookie}`,
-    },
-  });
+  const res = await fetch(
+    `${BASE_URL}/api/blog/posts?page=${page}&status=DRAFT`,
+    {
+      cache: "no-cache",
+      headers: {
+        Authorization: `Bearer ${cookie}`,
+      },
+    }
+  );
   if (!res.ok) throw new Error("Failed to all fetch posts");
   return res.json();
 }
 export async function getPostsCount(
   status: PostStatus | "all" = "PUBLISHED"
 ): Promise<{ count: number }> {
-  const res = await fetch(`${BASE_URL}/blog/posts/count?status=${status}`, {
+  const res = await fetch(`${BASE_URL}/api/blog/posts/count?status=${status}`, {
     cache: "no-cache",
   });
   if (!res.ok) throw new Error("Failed to fetch posts count");
@@ -77,7 +83,7 @@ export async function getPostById(postId: string | number): Promise<TPost> {
   // await new Promise((res) => setTimeout(res, 10000));
 
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/posts/${postId}`, {
+  const res = await fetch(`${BASE_URL}/api/blog/posts/${postId}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -95,12 +101,17 @@ export async function getPostCommentsById(
   // await new Promise((res) => setTimeout(res, 10000));
 
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/posts/${postId}/comments`, {
+  const res = await fetch(`${BASE_URL}/api/blog/posts/${postId}/comments`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
     },
   });
+
+  const data = res.json();
+  console.log("posts res: ", res);
+  console.log("posts data: ", data);
+
   if (!res.ok) throw new Error("Failed to fetch post comments");
   return res.json();
 }
@@ -108,7 +119,7 @@ export async function getPostsByTitle(title: string): Promise<TPost[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
   // if (!title) return [];
 
-  const res = await fetch(`${BASE_URL}/blog/posts/search?query=${title}`, {
+  const res = await fetch(`${BASE_URL}/api/blog/posts/search?query=${title}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -120,7 +131,7 @@ export async function getPostsByTitle(title: string): Promise<TPost[]> {
 export async function getLikedPosts(): Promise<TLikedSavedPost[] | null> {
   try {
     const cookie = cookies().get("jwtToken")?.value || "";
-    const res = await axios.get(`${BASE_URL}/blog/posts/likes`, {
+    const res = await axios.get(`${BASE_URL}/api/blog/posts/likes`, {
       headers: {
         Authorization: `Bearer ${cookie}`,
       },
@@ -134,7 +145,7 @@ export async function getLikedPosts(): Promise<TLikedSavedPost[] | null> {
 export async function getSavedPosts(): Promise<TLikedSavedPost[] | null> {
   try {
     const cookie = cookies().get("jwtToken")?.value || "";
-    const res = await axios.get(`${BASE_URL}/blog/posts/saves`, {
+    const res = await axios.get(`${BASE_URL}/api/blog/posts/saves`, {
       headers: {
         Authorization: `Bearer ${cookie}`,
       },
@@ -149,7 +160,7 @@ export async function getSavedPosts(): Promise<TLikedSavedPost[] | null> {
 // Comments
 export async function getComments(page: string = "1"): Promise<TComment[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/blog/comments?page=${page}`, {
+  const res = await fetch(`${BASE_URL}/api/blog/comments?page=${page}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -160,7 +171,7 @@ export async function getComments(page: string = "1"): Promise<TComment[]> {
   return res.json();
 }
 export async function getCommentsCount(): Promise<{ count: number }> {
-  const res = await fetch(`${BASE_URL}/blog/comments/count`, {
+  const res = await fetch(`${BASE_URL}/api/blog/comments/count`, {
     cache: "no-cache",
   });
   if (!res.ok) throw new Error("Failed to fetch comments count");

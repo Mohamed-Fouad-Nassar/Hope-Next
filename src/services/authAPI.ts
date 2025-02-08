@@ -43,7 +43,7 @@ export async function getUserById(userId: string, token: string) {
   }
 }
 export async function getUsersCount(): Promise<{ count: number }> {
-  const res = await fetch(`${BASE_URL}/auth/users/count`, {
+  const res = await fetch(`${BASE_URL}/api/auth/users/count`, {
     cache: "no-cache",
   });
   if (!res.ok) throw new Error("Failed to fetch users count");

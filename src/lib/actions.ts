@@ -49,7 +49,7 @@ export async function register(newUser: unknown) {
         message: "Missing Fields. Failed to create new user",
       };
     }
-    await axios.post(`${BASE_URL}/auth/register`, validation.data);
+    await axios.post(`${BASE_URL}/api/auth/register`, validation.data);
 
     revalidatePath("/");
     return { status: 200, message: "User created successfully" };
@@ -81,7 +81,7 @@ export async function login(user: unknown) {
         message: "Missing Fields. Failed to log in user",
       };
     }
-    const res = await axios.post(`${BASE_URL}/auth/login`, validation.data);
+    const res = await axios.post(`${BASE_URL}/api/auth/login`, validation.data);
 
     cookies().set("jwtToken", res.data.token);
     revalidatePath("/");
@@ -97,7 +97,7 @@ export async function login(user: unknown) {
 // Log out
 export async function logout() {
   try {
-    const res = await axios.get(`${BASE_URL}/auth/logout`);
+    const res = await axios.get(`${BASE_URL}/api/auth/logout`);
     cookies().delete("jwtToken");
     revalidatePath("/");
     return { status: 200, ...res.data };
@@ -140,7 +140,7 @@ export async function updateProfile(newUser: unknown) {
     }
 
     await axios.put(
-      `${BASE_URL}/auth/profile/${userFromToken?.id}`,
+      `${BASE_URL}/api/auth/profile/${userFromToken?.id}`,
       validation.data,
       {
         headers: {
@@ -191,7 +191,7 @@ export async function updatePassword(newPasswords: unknown) {
     console.log("validation: ", validation);
 
     await axios.put(
-      `${BASE_URL}/auth/profile/${userFromToken?.id}`,
+      `${BASE_URL}/api/auth/profile/${userFromToken?.id}`,
       { password: validation?.data?.password },
       {
         headers: {
@@ -243,7 +243,7 @@ export async function updatePassword(newPasswords: unknown) {
 //       };
 
 //     const res = await axios.post(
-//       `${BASE_URL}/blog/posts`,
+//       `${BASE_URL}/api/blog/posts`,
 //       validation.data,
 //       {
 //         headers: {
@@ -298,7 +298,7 @@ export async function createPost(post: unknown) {
       };
 
     await axios.post(
-      `${BASE_URL}/blog/posts`,
+      `${BASE_URL}/api/blog/posts`,
       { ...validation?.data, status: "PUBLISHED" },
       {
         headers: {
@@ -337,7 +337,7 @@ export async function saveDraft(post: unknown) {
       };
 
     await axios.post(
-      `${BASE_URL}/blog/posts`,
+      `${BASE_URL}/api/blog/posts`,
       { ...validation?.data, status: "DRAFT" },
       {
         headers: {
@@ -391,7 +391,7 @@ export async function updatePost(newPost: unknown) {
       };
 
     await axios.put(
-      `${BASE_URL}/blog/posts/${validation.data?.id}`,
+      `${BASE_URL}/api/blog/posts/${validation.data?.id}`,
       { ...validation?.data },
       {
         headers: {
@@ -447,7 +447,7 @@ export async function likePost(postId: unknown) {
         message: "Missing Fields. Failed to like post",
       };
 
-    await axios.post(`${BASE_URL}/blog/posts/likes`, validation.data, {
+    await axios.post(`${BASE_URL}/api/blog/posts/likes`, validation.data, {
       headers: {
         Authorization: `Bearer ${cookie}`,
       },
@@ -494,7 +494,7 @@ export async function unlikePost(postId: unknown) {
       };
 
     await axios.delete(
-      `${BASE_URL}/blog/posts/likes?postId=${validation.data?.postId}`,
+      `${BASE_URL}/api/blog/posts/likes?postId=${validation.data?.postId}`,
       {
         headers: {
           Authorization: `Bearer ${cookie}`,
@@ -540,7 +540,7 @@ export async function savePost(postId: unknown) {
         message: "Missing Fields. Failed to save post",
       };
 
-    await axios.post(`${BASE_URL}/blog/posts/saves`, validation.data, {
+    await axios.post(`${BASE_URL}/api/blog/posts/saves`, validation.data, {
       headers: {
         Authorization: `Bearer ${cookie}`,
       },
@@ -587,7 +587,7 @@ export async function unSavePost(postId: unknown) {
       };
 
     await axios.delete(
-      `${BASE_URL}/blog/posts/saves?postId=${validation.data?.postId}`,
+      `${BASE_URL}/api/blog/posts/saves?postId=${validation.data?.postId}`,
       {
         headers: {
           Authorization: `Bearer ${cookie}`,
@@ -637,11 +637,14 @@ export async function deletePost(postId: number) {
         message: "Missing Fields. Failed to delete post",
       };
 
-    await axios.delete(`${BASE_URL}/blog/posts/${validation.data?.postId}`, {
-      headers: {
-        Authorization: `Bearer ${cookie}`,
-      },
-    });
+    await axios.delete(
+      `${BASE_URL}/api/blog/posts/${validation.data?.postId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${cookie}`,
+        },
+      }
+    );
 
     revalidatePath("/blog");
     revalidatePath("/dashboard/posts");
@@ -688,7 +691,7 @@ export async function createNewComment(comment: unknown) {
         message: "Missing Fields. Failed to create new comment",
       };
 
-    await axios.post(`${BASE_URL}/blog/comments`, validation.data, {
+    await axios.post(`${BASE_URL}/api/blog/comments`, validation.data, {
       headers: { cookie: `jwtToken=${userToken}` },
     });
 
@@ -744,7 +747,7 @@ export async function updateComment(comment: unknown) {
       };
 
     await axios.put(
-      `${BASE_URL}/blog/comments/${validation.data?.id}`,
+      `${BASE_URL}/api/blog/comments/${validation.data?.id}`,
       { content: validation.data?.content },
       { headers: { cookie: `jwtToken=${userToken}` } }
     );
@@ -799,7 +802,7 @@ export async function deleteComment(comment: unknown) {
         message: "Missing Fields. Failed to delete comment",
       };
 
-    await axios.delete(`${BASE_URL}/blog/comments/${validation.data?.id}`, {
+    await axios.delete(`${BASE_URL}/api/blog/comments/${validation.data?.id}`, {
       headers: { cookie: `jwtToken=${cookie}` },
     });
 
@@ -860,7 +863,7 @@ export async function createEvent(event: unknown) {
       };
 
     await axios.post(
-      `${BASE_URL}/events`,
+      `${BASE_URL}/api/events`,
       {
         ...validation.data,
         startDate: new Date(validation.data?.startDate).toISOString(),
@@ -919,7 +922,7 @@ export async function updateEvent(id: number, event: unknown) {
         message: "Missing Fields. Failed to update event",
       };
 
-    await axios.put(`${BASE_URL}/events/${id}`, validation.data, {
+    await axios.put(`${BASE_URL}/api/events/${id}`, validation.data, {
       headers: { cookie: `jwtToken=${userToken}` },
     });
 
@@ -965,9 +968,9 @@ export async function deleteEvent(eventId: number) {
         message: "Missing Fields. Failed to delete event",
       };
 
-    console.log(`${BASE_URL}/events/${validation.data?.eventId}`);
+    console.log(`${BASE_URL}/api/events/${validation.data?.eventId}`);
 
-    await axios.delete(`${BASE_URL}/events/${validation.data?.eventId}`, {
+    await axios.delete(`${BASE_URL}/api/events/${validation.data?.eventId}`, {
       headers: {
         Authorization: `Bearer ${cookie}`,
       },
@@ -1015,7 +1018,7 @@ export async function createOrganizer(organizer: unknown) {
         message: "Missing Fields. Failed to create new organizer",
       };
 
-    await axios.post(`${BASE_URL}/organizers`, validation.data, {
+    await axios.post(`${BASE_URL}/api/organizers`, validation.data, {
       headers: { cookie: `jwtToken=${userToken}` },
     });
 
@@ -1064,7 +1067,7 @@ export async function updateSettings(setting: unknown) {
         message: "Missing Fields. Failed to update Settings",
       };
 
-    await axios.put(`${BASE_URL}/settings`, validation.data, {
+    await axios.put(`${BASE_URL}/api/settings`, validation.data, {
       headers: { cookie: `jwtToken=${userToken}` },
     });
 

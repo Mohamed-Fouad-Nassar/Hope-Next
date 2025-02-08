@@ -12,7 +12,11 @@ export default function HomeEventsSlider({ events }: { events: Event[] }) {
       data={events}
       // withBullets={false}
       render={(currentSlide, _, index) => (
-        <Carousel.CarouselItem index={index} currentSlide={currentSlide}>
+        <Carousel.CarouselItem
+          key={index}
+          index={index}
+          currentSlide={currentSlide}
+        >
           <Link href={`/events/${events[index].id}`}>
             <EventBanner
               event={{

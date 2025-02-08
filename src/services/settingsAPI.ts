@@ -6,7 +6,7 @@ import { BASE_URL } from "@/lib/constants";
 // import { updateSettingsSchema } from "@/lib/validations";
 
 export async function getSettings() {
-  const res = await fetch(`${BASE_URL}/settings`, {
+  const res = await fetch(`${BASE_URL}/api/settings`, {
     cache: "no-cache",
   });
 

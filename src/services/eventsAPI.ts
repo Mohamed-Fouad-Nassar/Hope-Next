@@ -16,11 +16,9 @@ export async function getEvents(
   type?: string,
   status?: string
 ): Promise<TEventWithUser[]> {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
-
   const cookie = cookies().get("jwtToken")?.value || "";
   const res = await fetch(
-    `${BASE_URL}/events?page=${page || "1"}&type=${type || "all"}&status=${
+    `${BASE_URL}/api/events?page=${page || "1"}&type=${type || "all"}&status=${
       status || "all"
     }`,
     {
@@ -43,7 +41,7 @@ export async function getEventById(
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`${BASE_URL}/events/${eventId}`, {
+  const res = await fetch(`${BASE_URL}/api/events/${eventId}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -59,7 +57,7 @@ export async function getEventById(
 export async function getEventsByTitle(title: string): Promise<Event[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
 
-  const res = await fetch(`${BASE_URL}/events/search?query=${title}`, {
+  const res = await fetch(`${BASE_URL}/api/events/search?query=${title}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -77,7 +75,9 @@ export async function getEventsCount(
   // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const res = await fetch(
-    `${BASE_URL}/events/count?type=${type || "all"}&status=${status || "all"}`,
+    `${BASE_URL}/api/events/count?type=${type || "all"}&status=${
+      status || "all"
+    }`,
     {
       cache: "no-cache",
     }
@@ -89,7 +89,7 @@ export async function getEventsCount(
 
 // --------------------- Organizers ---------------------
 export async function getOrganizers(): Promise<TEventOrganizer[]> {
-  const res = await fetch(`${BASE_URL}/organizers`, {
+  const res = await fetch(`${BASE_URL}/api/organizers`, {
     cache: "no-cache",
   });
 
@@ -98,7 +98,7 @@ export async function getOrganizers(): Promise<TEventOrganizer[]> {
 }
 
 export async function getOrganizersCount(): Promise<{ count: number }> {
-  const res = await fetch(`${BASE_URL}/organizers/count`, {
+  const res = await fetch(`${BASE_URL}/api/organizers/count`, {
     cache: "no-cache",
   });
 
