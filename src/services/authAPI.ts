@@ -6,7 +6,7 @@ import { TFullUser, TUser } from "@/types/auth.types";
 
 export async function getUsers(page: string = "1"): Promise<TUser[]> {
   const cookie = cookies().get("jwtToken")?.value || "";
-  const res = await fetch(`http://localhost:3000/api/auth/users?page=${page}`, {
+  const res = await fetch(`${BASE_URL}/api/auth/users?page=${page}`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -19,7 +19,7 @@ export async function getUsers(page: string = "1"): Promise<TUser[]> {
 export async function getCurrentUser(): Promise<TFullUser> {
   const cookie = cookies().get("jwtToken")?.value || "";
 
-  const res = await fetch(`http://localhost:3000/api/auth/profile`, {
+  const res = await fetch(`${BASE_URL}/api/auth/profile`, {
     cache: "no-cache",
     headers: {
       Authorization: `Bearer ${cookie}`,
@@ -31,10 +31,9 @@ export async function getCurrentUser(): Promise<TFullUser> {
 }
 export async function getUserById(userId: string, token: string) {
   try {
-    const res = await axios.get(
-      `http://localhost:3000/api/auth/profile/${userId}`,
-      { headers: { cookie: `jwtToken=${token}` } }
-    );
+    const res = await axios.get(`${BASE_URL}/api/auth/profile/${userId}`, {
+      headers: { cookie: `jwtToken=${token}` },
+    });
 
     return res.data;
   } catch (err) {

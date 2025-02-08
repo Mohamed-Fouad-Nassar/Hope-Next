@@ -194,8 +194,8 @@ export default function NavBar({ user }: TNavbarProps) {
 
       {/* Mobile Menu */}
       <Dialog
-        open={mobileMenuOpen}
         className="lg:hidden"
+        open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
