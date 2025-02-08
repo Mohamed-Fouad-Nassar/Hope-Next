@@ -27,7 +27,7 @@ export default async function Header() {
           </Link>
         </div>
 
-        <NavBar user={userFullData} />
+        <NavBar user={userFullData} key={userFullData?.id || "guest"} />
       </div>
     </header>
   );

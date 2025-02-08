@@ -24,7 +24,7 @@ export function setCookie(jwtPayload: TJwtPayload): string {
 
   const cookie = serialize("jwtToken", token, {
     path: "/",
-    httpOnly: true,
+    // httpOnly: true,
     sameSite: "strict",
     maxAge: 60 * 60 * 24 * 30,
     secure: process.env.NODE_ENV !== "development",
