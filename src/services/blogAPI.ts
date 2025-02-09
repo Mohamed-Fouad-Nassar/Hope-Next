@@ -108,10 +108,6 @@ export async function getPostCommentsById(
     },
   });
 
-  const data = res.json();
-  console.log("posts res: ", res);
-  console.log("posts data: ", data);
-
   if (!res.ok) throw new Error("Failed to fetch post comments");
   return res.json();
 }
