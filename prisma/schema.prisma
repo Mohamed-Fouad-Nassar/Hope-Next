@@ -23,6 +23,13 @@ model User {
   image     String?   @db.VarChar(500) // Image URL
   createdAt DateTime  @default(now()) // Timestamp for first creation
   updatedAt DateTime  @updatedAt // Updated at timestamp
+  
+  emailVerified Boolean @default(false)
+  emailVerificationCode String? @unique
+
+  resetPasswordToken String? @unique
+  resetPasswordTokenExpiry DateTime?
+
   posts     Post[] // One-to-many relation with Post
   comments  Comment[] // One-to-many relation with Comment
 

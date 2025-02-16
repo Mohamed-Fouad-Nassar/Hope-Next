@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 
 import prisma from "@/lib/prisma";
-import { generateJWT, setCookie } from "@/utils/jwt";
 import { authSchema } from "@/lib/validations";
+import { generateJWT, setCookie } from "@/utils/jwt";
 
 export const dynamic = "force-dynamic";
 
@@ -51,8 +51,13 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
 
+    if (!user.emailVerified)
+      return NextResponse.json(
+        { message: "Account not verified. Please verify your account" },
+        { status: 400 }
+      );
+
     const isPasswordMatch = await bcrypt.compare(body.password, user.password);
-    console.log("isPasswordMatch: ", isPasswordMatch);
 
     if (!isPasswordMatch)
       return NextResponse.json(

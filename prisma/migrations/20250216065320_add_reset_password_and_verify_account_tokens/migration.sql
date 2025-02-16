@@ -17,6 +17,10 @@ CREATE TABLE "User" (
     "image" VARCHAR(500),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "emailVerified" BOOLEAN NOT NULL DEFAULT false,
+    "emailVerificationCode" TEXT,
+    "resetPasswordToken" TEXT,
+    "resetPasswordTokenExpiry" TIMESTAMP(3),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -126,6 +130,12 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_emailVerificationCode_key" ON "User"("emailVerificationCode");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_resetPasswordToken_key" ON "User"("resetPasswordToken");
 
 -- AddForeignKey
 ALTER TABLE "Post" ADD CONSTRAINT "Post_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

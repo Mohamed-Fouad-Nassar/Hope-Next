@@ -10,17 +10,17 @@ import {
   registerSchema,
   deletePostSchema,
   createPostSchema,
+  updatePostSchema,
+  deleteEventSchema,
+  createEventSchema,
+  updateEventSchema,
   likeSavePostSchema,
   createCommentSchema,
   deleteCommentSchema,
   updateCommentSchema,
   updateProfileSchema,
   updatePasswordSchema,
-  deleteEventSchema,
-  createEventSchema,
-  updateEventSchema,
   updateSettingsSchema,
-  updatePostSchema,
   createOrganizerSchema,
 } from "./validations";
 import { BASE_URL } from "./constants";
@@ -49,10 +49,12 @@ export async function register(newUser: unknown) {
         message: "Missing Fields. Failed to create new user",
       };
     }
+
+    // create the user and send verification email
     await axios.post(`${BASE_URL}/api/auth/register`, validation.data);
 
     revalidatePath("/");
-    return { status: 200, message: "User created successfully" };
+    return { status: 200, message: "Verification email sent successfully" };
   } catch (err) {
     console.log(err);
     return {
@@ -90,7 +92,9 @@ export async function login(user: unknown) {
     console.log(err);
     return {
       status: 400,
-      message: "Failed to log in user",
+      message: isAxiosError(err)
+        ? err.response?.data?.message || err.response?.data || err.message
+        : "Failed to log in user",
     };
   }
 }
@@ -170,6 +174,7 @@ export type TUpdatePasswordState = {
 };
 export async function updatePassword(newPasswords: unknown) {
   // new Promise((res) => setTimeout(res, 3000));
+
   try {
     const cookie = cookies().get("jwtToken")?.value;
     if (!cookie)
@@ -180,15 +185,12 @@ export async function updatePassword(newPasswords: unknown) {
     const userFromToken = await verifyToken(cookie);
 
     const validation = updatePasswordSchema.safeParse(newPasswords);
-    if (!validation.success) {
+    if (!validation.success)
       return {
         status: 400,
         errors: validation.error.flatten().fieldErrors,
         message: "Missing Fields. Failed to update Password",
       };
-    }
-
-    console.log("validation: ", validation);
 
     await axios.put(
       `${BASE_URL}/api/auth/profile/${userFromToken?.id}`,
@@ -201,6 +203,53 @@ export async function updatePassword(newPasswords: unknown) {
     );
 
     revalidatePath("/");
+    return { status: 200, message: "Password updated successfully" };
+  } catch (err) {
+    console.log(err);
+    return {
+      status: 400,
+      message: "Failed to update Password",
+    };
+  }
+}
+// Change Password
+export type TChangePasswordState = {
+  status?: number;
+  message?: string;
+  errors?: {
+    password?: string[];
+    repeatPassword?: string[];
+  };
+};
+export async function changePassword(data: unknown) {
+  try {
+    const { token, ...passwords } = data as {
+      token: string;
+      password: string;
+      repeatPassword: string;
+    };
+
+    const validation = updatePasswordSchema.safeParse(passwords);
+    if (!validation.success)
+      return {
+        status: 400,
+        errors: validation.error.flatten().fieldErrors,
+        message: "Missing Fields. Failed to update Password",
+      };
+
+    const res = await fetch(`${BASE_URL}/api/auth/change-password`, {
+      method: "PUT",
+      body: JSON.stringify({
+        token,
+        password: validation?.data?.password,
+        repeatPassword: validation?.data?.repeatPassword,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) return { status: 400, message: "Failed to update Password" };
+
     return { status: 200, message: "Password updated successfully" };
   } catch (err) {
     console.log(err);

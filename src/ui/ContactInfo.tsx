@@ -7,6 +7,13 @@ import {
 export default function ContactInfo() {
   return (
     <div className="flex flex-col gap-5">
+      <h2 className="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+        Contact us
+      </h2>
+      <p className="text-lg leading-8 text-gray-600">
+        Learn how to grow your business with our expert advice.
+      </p>
+
       <h3 className="text-pretty text-xl font-semibold tracking-tight text-gray-900 sm:text-2xl">
         Contact Info
       </h3>

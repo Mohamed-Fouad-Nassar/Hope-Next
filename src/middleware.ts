@@ -13,7 +13,9 @@ export async function middleware(request: NextRequest) {
     if (
       pathname === "/login" ||
       pathname === "/register" ||
-      pathname === "/reset-password"
+      pathname === "/reset-password" ||
+      pathname === "/verify-account" ||
+      pathname === "/check-email"
     )
       return NextResponse.redirect(new URL("/", request.url));
 
@@ -37,7 +39,9 @@ export const config = {
   matcher: [
     "/login",
     "/register",
+    "/check-email",
     "/reset-password",
+    "/verify-account",
     "/profile/:path*",
     "/dashboard/:path*",
   ],

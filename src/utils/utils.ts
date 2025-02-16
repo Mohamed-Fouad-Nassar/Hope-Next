@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import { format } from "date-fns";
 
 export function extractTextFromHTML(html: string) {
@@ -8,6 +9,14 @@ export function extractTextFromHTML(html: string) {
 
 export function formateDateTime(date: string | Date) {
   return format(new Date(date), "MMM dd, yyyy - h:mm a");
+}
+
+export function generateVerificationCode(length = 8) {
+  return crypto.randomBytes(length).toString("base64url").slice(0, length);
+}
+
+export function generateResetPasswordToken(length = 15) {
+  return crypto.randomBytes(length).toString("base64url");
 }
 
 // export const formatCurrency = (amount: number) => {
