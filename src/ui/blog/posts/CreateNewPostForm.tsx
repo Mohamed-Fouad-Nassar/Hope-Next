@@ -158,13 +158,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 "use client";
+
 import clsx from "clsx";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import Alert from "@/ui/Alert";
 import Button from "@/ui/Button";
+import Spinner from "@/ui/Spinner";
 import FormRow from "@/ui/FormRow";
 import RichTextEditor from "@/ui/richTextEditor";
 
@@ -226,8 +229,13 @@ export default function CreateNewPostForm() {
 
   const { error, settings, isLoading } = useSettings();
 
-  if (isLoading) return <>Loading...</>;
-  if (error) return <>Error: {error}</>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center py-20">
+        <Spinner />
+      </div>
+    );
+  if (error) return <Alert className="my-4">{error?.message}</Alert>;
 
   const handleSubmitAction = async (
     action: (postData: unknown) => Promise<{ status: number; message: string }>

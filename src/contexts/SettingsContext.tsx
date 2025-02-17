@@ -43,10 +43,24 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
     fetchSettings();
   }, []);
 
+  // const reloadSettings = async () => {
+  //   const res = await fetch("/api/settings", { cache: "no-store" });
+  //   const data = await res.json();
+  //   setSettings(data);
+  // };
   const reloadSettings = async () => {
-    const res = await fetch("/api/settings", { cache: "no-store" });
-    const data = await res.json();
-    setSettings(data);
+    try {
+      const res = await fetch("/api/settings", { cache: "no-store" });
+      if (!res.ok) {
+        throw new Error("Failed to fetch settings");
+      }
+      const data = await res.json();
+      setSettings(data);
+    } catch (err) {
+      setError(err as Error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

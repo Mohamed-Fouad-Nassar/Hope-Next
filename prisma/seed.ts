@@ -69,11 +69,24 @@ async function main() {
   //   ],
   // });
 
+  // // Seed Settings
+  // await prisma.settings.create({
+  //   data: {
+  //     id: 1,
+  //     usersPerPage: 10,
+  //     eventsPerPage: 9,
+  //     articlesPerPage: 9,
+  //     commentsPerPage: 12,
+  //     postLengthLimit: 3000,
+  //     eventLengthLimit: 1500,
+  //   },
+  // });
+
   // // Seed Posts
   // await prisma.post.createMany({
   //   data: [
   //     {
-  //       id: 1,
+  //       // id: 1,
   //       title: "Living Beyond Cancer",
   //       description: `
   //     <p><em><mark>A journey of hope and healing, </mark></em></p>
@@ -95,7 +108,7 @@ async function main() {
   //       status: "DRAFT",
   //     },
   //     {
-  //       id: 2,
+  //       // id: 2,
   //       title: "Preventing Cancer: Lifestyle Tips",
   //       description: `
   //     <p><em><mark>Small changes, big impact, </mark></em></p>
@@ -117,7 +130,7 @@ async function main() {
   //       status: "PUBLISHED",
   //     },
   //     {
-  //       id: 3,
+  //       // id: 3,
   //       title: "Breaking Myths About Cancer",
   //       description: `
   //     <p><em><mark>Debunking common misconceptions about cancer, </mark></em></p>
@@ -139,7 +152,7 @@ async function main() {
   //       status: "PUBLISHED",
   //     },
   //     {
-  //       id: 4,
+  //       // id: 4,
   //       title: "Caregiving for Cancer Patients",
   //       description: `
   //     <p><em><mark>Support tips for caregivers, </mark></em></p>
@@ -161,7 +174,7 @@ async function main() {
   //       status: "HIDDEN",
   //     },
   //     {
-  //       id: 5,
+  //       // id: 5,
   //       title: "The Role of Exercise During Cancer Treatment",
   //       description: `
   //     <p><em><mark>How physical activity aids recovery, </mark></em></p>
@@ -183,7 +196,7 @@ async function main() {
   //       status: "HIDDEN",
   //     },
   //     {
-  //       id: 6,
+  //       // id: 6,
   //       title: "Navigating Treatment Options: A Patient’s Guide",
   //       description: `
   //     <p><em><mark>Breaking down treatment plans, </mark></em></p>
@@ -211,244 +224,244 @@ async function main() {
   // await prisma.comment.createMany({
   //   data: [
   //     {
-  //       id: 1,
+  //       // id: 1,
   //       postId: 1,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "First comment on post 1. Great insights!",
   //     },
   //     {
-  //       id: 2,
+  //       // id: 2,
   //       postId: 2,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "Very informative! Thanks for sharing.",
   //     },
   //     {
-  //       id: 3,
+  //       // id: 3,
   //       postId: 3,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "This post really resonated with me.",
   //     },
   //     {
-  //       id: 4,
+  //       // id: 4,
   //       postId: 4,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "Thanks for clarifying this important topic.",
   //     },
   //     {
-  //       id: 5,
+  //       // id: 5,
   //       postId: 5,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "I have a question about this section...",
   //     },
   //     {
-  //       id: 6,
+  //       // id: 6,
   //       postId: 1,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "Really helpful post. Keep them coming!",
   //     },
   //     {
-  //       id: 7,
+  //       // id: 7,
   //       postId: 2,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "The tips here are very practical. Thanks!",
   //     },
   //     {
-  //       id: 8,
+  //       // id: 8,
   //       postId: 3,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "This is a well-written post. Great work!",
   //     },
   //     {
-  //       id: 9,
+  //       // id: 9,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "I learned something new from this post.",
   //     },
   //     {
-  //       id: 10,
+  //       // id: 10,
   //       postId: 5,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "I appreciate the effort put into this article.",
   //     },
   //     {
-  //       id: 11,
+  //       // id: 11,
   //       postId: 6,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "This content is much needed. Thanks!",
   //     },
   //     {
-  //       id: 12,
+  //       // id: 12,
   //       postId: 6,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "Great explanation! Easy to understand.",
   //     },
   //     {
-  //       id: 13,
+  //       // id: 13,
   //       postId: 1,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "Can you provide more details about this?",
   //     },
   //     {
-  //       id: 14,
+  //       // id: 14,
   //       postId: 2,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "This really helped me understand the topic.",
   //     },
   //     {
-  //       id: 15,
+  //       // id: 15,
   //       postId: 3,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "What a fantastic read! Very helpful.",
   //     },
   //     {
-  //       id: 16,
+  //       // id: 16,
   //       postId: 4,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "Thanks for putting this together. Very useful.",
   //     },
   //     {
-  //       id: 17,
+  //       // id: 17,
   //       postId: 5,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "I appreciate the practical advice here.",
   //     },
   //     {
-  //       id: 18,
+  //       // id: 18,
   //       postId: 6,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "This is one of the best posts I've read recently.",
   //     },
   //     {
-  //       id: 19,
+  //       // id: 19,
   //       postId: 1,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "Looking forward to more posts like this!",
   //     },
   //     {
-  //       id: 20,
+  //       // id: 20,
   //       postId: 1,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "This is a great post! Really enjoyed the insights.",
   //     },
   //     {
-  //       id: 21,
+  //       // id: 21,
   //       postId: 2,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content:
   //         "I have a question about this point you made. Can you clarify?",
   //     },
   //     {
-  //       id: 22,
+  //       // id: 22,
   //       postId: 3,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "Very inspiring content. Thank you for sharing!",
   //     },
   //     {
-  //       id: 23,
+  //       // id: 23,
   //       postId: 2,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "I didn’t realize this before. Thanks for pointing it out!",
   //     },
   //     {
-  //       id: 24,
+  //       // id: 24,
   //       postId: 2,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "This really helped me understand a tough topic.",
   //     },
   //     {
-  //       id: 25,
+  //       // id: 25,
   //       postId: 2,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "Could you expand on this with more examples?",
   //     },
   //     {
-  //       id: 26,
+  //       // id: 26,
   //       postId: 3,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "The examples here are spot on. Loved this post!",
   //     },
   //     {
-  //       id: 27,
+  //       // id: 27,
   //       postId: 3,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "This has inspired me to look deeper into the subject.",
   //     },
   //     {
-  //       id: 28,
+  //       // id: 28,
   //       postId: 4,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "Very clear and concise. Great read!",
   //     },
   //     {
-  //       id: 29,
+  //       // id: 29,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "This makes so much sense now. Thanks for explaining!",
   //     },
   //     {
-  //       id: 30,
+  //       // id: 30,
   //       postId: 5,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "The details in this post are incredibly useful.",
   //     },
   //     {
-  //       id: 31,
+  //       // id: 31,
   //       postId: 5,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "I shared this with my team. They found it helpful too.",
   //     },
   //     {
-  //       id: 32,
+  //       // id: 32,
   //       postId: 3,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "This is exactly what I was looking for. Thanks!",
   //     },
   //     {
-  //       id: 33,
+  //       // id: 33,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content: "Excellent explanation. Helped me a lot.",
   //     },
   //     {
-  //       id: 34,
+  //       // id: 34,
   //       postId: 5,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //       content: "Brilliant post! Please create more like this.",
   //     },
   //     {
-  //       id: 35,
+  //       // id: 35,
   //       postId: 5,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "I’ve bookmarked this for future reference. So useful!",
   //     },
   //     {
-  //       id: 36,
+  //       // id: 36,
   //       postId: 6,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //       content: "Could you also share resources related to this topic?",
   //     },
   //     {
-  //       id: 37,
+  //       // id: 37,
   //       postId: 6,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //       content: "This gave me a new perspective on the topic.",
   //     },
 
   //     {
-  //       id: 38,
+  //       // id: 38,
   //       postId: 2,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //       content: "A well-detailed post. Appreciate your effort!",
   //     },
   //     {
-  //       id: 39,
+  //       // id: 39,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //       content:
   //         "I think this is one of the most comprehensive posts I’ve seen.",
   //     },
   //     {
-  //       id: 40,
+  //       // id: 40,
   //       postId: 4,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //       content: "It’s posts like this that make learning enjoyable!",
@@ -460,102 +473,102 @@ async function main() {
   // await prisma.like.createMany({
   //   data: [
   //     {
-  //       id: 1,
+  //       // id: 1,
   //       postId: 1,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 2,
+  //       // id: 2,
   //       postId: 1,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 3,
+  //       // id: 3,
   //       postId: 1,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 4,
+  //       // id: 4,
   //       postId: 2,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 5,
+  //       // id: 5,
   //       postId: 2,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 6,
+  //       // id: 6,
   //       postId: 3,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 7,
+  //       // id: 7,
   //       postId: 3,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 8,
+  //       // id: 8,
   //       postId: 4,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 9,
+  //       // id: 9,
   //       postId: 5,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 10,
+  //       // id: 10,
   //       postId: 6,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 11,
+  //       // id: 11,
   //       postId: 4,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 12,
+  //       // id: 12,
   //       postId: 4,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 13,
+  //       // id: 13,
   //       postId: 5,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 14,
+  //       // id: 14,
   //       postId: 5,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 15,
+  //       // id: 15,
   //       postId: 5,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 16,
+  //       // id: 16,
   //       postId: 2,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 17,
+  //       // id: 17,
   //       postId: 6,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 18,
+  //       // id: 18,
   //       postId: 6,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 19,
+  //       // id: 19,
   //       postId: 3,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 20,
+  //       // id: 20,
   //       postId: 3,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
@@ -566,117 +579,117 @@ async function main() {
   // await prisma.save.createMany({
   //   data: [
   //     {
-  //       id: 1,
+  //       // id: 1,
   //       postId: 1,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 2,
+  //       // id: 2,
   //       postId: 1,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 3,
+  //       // id: 3,
   //       postId: 1,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 4,
+  //       // id: 4,
   //       postId: 2,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 5,
+  //       // id: 5,
   //       postId: 2,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 6,
+  //       // id: 6,
   //       postId: 3,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 7,
+  //       // id: 7,
   //       postId: 3,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 8,
+  //       // id: 8,
   //       postId: 4,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 9,
+  //       // id: 9,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 10,
+  //       // id: 10,
   //       postId: 6,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 11,
+  //       // id: 11,
   //       postId: 6,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 12,
+  //       // id: 12,
   //       postId: 6,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 13,
+  //       // id: 13,
   //       postId: 5,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 14,
+  //       // id: 14,
   //       postId: 5,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 15,
+  //       // id: 15,
   //       postId: 5,
   //       userId: "3d53ea04-2df6-41c7-bfdc-3b8330215f4d",
   //     },
   //     {
-  //       id: 16,
+  //       // id: 16,
   //       postId: 5,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 17,
+  //       // id: 17,
   //       postId: 4,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 18,
+  //       // id: 18,
   //       postId: 4,
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 19,
+  //       // id: 19,
   //       postId: 4,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
   //     {
-  //       id: 20,
+  //       // id: 20,
   //       postId: 3,
   //       userId: "19694096-0179-4835-9bd2-98dd6546d4aa",
   //     },
   //     {
-  //       id: 21,
+  //       // id: 21,
   //       postId: 5,
   //       userId: "68e3f266-d2dc-480f-abea-73ffcb56742d",
   //     },
   //     {
-  //       id: 22,
+  //       // id: 22,
   //       postId: 5,
   //       userId: "297b902e-b3fa-42ee-bd0e-020dd09cf352",
   //     },
   //     {
-  //       id: 23,
+  //       // id: 23,
   //       postId: 6,
   //       userId: "4393bb4f-3f1c-4f93-bcc1-b1ea70bca229",
   //     },
@@ -705,7 +718,7 @@ async function main() {
   // await prisma.event.createMany({
   //   data: [
   //     {
-  //       id: 1,
+  //       // id: 1,
   //       title: "Cancer Awareness Webinar",
   //       description:
   //         "Join us for an insightful session on early detection and prevention of cancer. Learn from top oncologists and cancer survivors who share their inspiring stories and practical tips. This event aims to provide resources and empower individuals to lead healthier lives.",
@@ -745,7 +758,7 @@ async function main() {
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 2,
+  //       // id: 2,
   //       title: "Cancer Survivors Meetup",
   //       description:
   //         "A heartfelt gathering of cancer survivors sharing their journeys, challenges, and victories. This hybrid event aims to foster support, celebrate resilience, and inspire hope among the community.",
@@ -785,7 +798,7 @@ async function main() {
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 3,
+  //       // id: 3,
   //       title: "Cancer Research Updates",
   //       description:
   //         "Discover the latest advancements in cancer research from leading scientists and researchers. This onsite event will highlight cutting-edge treatments, breakthroughs, and the future of cancer care.",
@@ -825,7 +838,7 @@ async function main() {
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 4,
+  //       // id: 4,
   //       title: "Fundraiser Walk for Cancer Awareness",
   //       description:
   //         "Join the community in raising funds for cancer research and support programs. The walk will take place in a beautiful park with refreshments, live music, and activities for all ages.",
@@ -864,7 +877,7 @@ async function main() {
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //     {
-  //       id: 5,
+  //       // id: 5,
   //       title: "Healthy Living Seminar",
   //       description:
   //         "This seminar focuses on how a healthy lifestyle can help reduce the risk of cancer. Topics include balanced nutrition, physical activity, and mental well-being, presented by health experts.",
@@ -904,19 +917,6 @@ async function main() {
   //       userId: "a2f4ee21-2099-44f6-8dcf-3f6ca95b67ac",
   //     },
   //   ],
-  // });
-
-  // // Seed Settings
-  // await prisma.settings.create({
-  //   data: {
-  //     id: 1,
-  //     usersPerPage: 10,
-  //     eventsPerPage: 9,
-  //     articlesPerPage: 9,
-  //     commentsPerPage: 12,
-  //     postLengthLimit: 3000,
-  //     eventLengthLimit: 1500,
-  //   },
   // });
 
   console.log("Seeding completed!");

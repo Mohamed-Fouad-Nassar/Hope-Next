@@ -5,9 +5,9 @@ export default function Alert({
   className = "",
   status = "failed",
 }: {
-  status?: "failed" | "success";
-  children: React.ReactNode;
   className?: string;
+  children: React.ReactNode;
+  status?: "failed" | "success";
 }) {
   return (
     <div
