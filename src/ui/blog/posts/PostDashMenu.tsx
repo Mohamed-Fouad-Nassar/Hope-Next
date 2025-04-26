@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   EyeIcon,
   TrashIcon,
@@ -8,6 +7,7 @@ import {
   PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
 import toast from "react-hot-toast";
+import axios, { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 
 import Modal from "@/ui/Modal";
@@ -34,9 +34,14 @@ export default function PostDashMenu({
       });
       toast.success("Post updated successfully");
       router.refresh();
-    } catch (error) {
-      console.error("error: ", error);
-      toast.error("Failed to updated post");
+    } catch (err) {
+      console.error("error: ", err);
+      // toast.error("Failed to updated post");
+      toast.error(
+        isAxiosError(err)
+          ? err?.response?.data?.message
+          : "Failed to updated post"
+      );
     }
   }
 

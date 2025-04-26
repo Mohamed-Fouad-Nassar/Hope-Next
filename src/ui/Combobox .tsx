@@ -73,7 +73,7 @@ export default function Combobox({
               <li
                 key={item.value}
                 onClick={() => handleSelect(item)}
-                className="group flex flex-col cursor-pointer select-none py-2 px-4 hover:bg-indigo-500"
+                className="group flex flex-col cursor-pointer select-none py-2 px-4 hover:bg-main-500"
               >
                 <span className="group-hover:text-white">{item.title}</span>
                 {item.subTitle && (

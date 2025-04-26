@@ -1,5 +1,5 @@
-// export const BASE_URL = "http://localhost:3000";
-export const BASE_URL = "https://hope-next-app.vercel.app";
+export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://hope-next-app.vercel.app";
 
 export const POST_LIMIT = 3000;
 export const EVENT_LIMIT = 1500;
